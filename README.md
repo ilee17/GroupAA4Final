@@ -5,7 +5,7 @@ https://www.figma.com/file/2LBexHPgZsBIvZB0BTEw8A/GEOG458%3A-Final-Project-Proto
 
 ### Project Idea and Project Significance
 
-For the final project, our project idea is to display restaurant reviews and rating in Seattle, Washington through mapping interface. Tourists and new residents often rely on online reviews to make dining decisions. We want to create a platform that could become a go-to resource for those looking to explore Seattle's culinary scene. It marries the utility of geographic information systems (GIS) with the vast domain of user-generated content on restaurant experiences. Collecting and analyzing data on user preferences and restaurant performance can offer valuable insights for city planners, marketers, and business owners about dining trends and customer demands in Seattle. 
+For the final project, our project idea is to display restaurant reviews and rating in Seattle, Washington through mapping interface. Tourists and new residents often rely on online reviews to make dining decisions. We want to create a platform that could become a go-to resource for those looking to explore Seattle's culinary scene. Reviews are helpful tools that serve the purpose of displaying helpful information.We are intending to focus on restaurant compliments in Seattle and visualizing it using a smartdash board application. It marries the utility of geographic information systems (GIS) with the vast domain of user-generated content on restaurant experiences. Collecting and analyzing data on user preferences and restaurant performance can offer valuable insights for city planners, marketers, and business owners about dining trends and customer demands in Seattle. 
 
 
 ### Primary Functions and Project Format
