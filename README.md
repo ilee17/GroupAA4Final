@@ -17,7 +17,7 @@ Proposed interactive functions will be hovering features, legends, interactive a
 
 ### Major Data Sources and Targeted Audience
 
-The potential data that will be collected will come from the King CountyLinks to an external site. website, as well as restaurant business rankings from kaggle.comLinks to an external site. In addition, this pageLinks to an external site. provided by The New York Times, will also prove to be helpful in mapping the different available restaurants. The reasonable functions that can be completed by the end of the quarter should be all of them given that our team works in a timely and efficient manner. The target audience for this visualization will be for potential restaurant customers, or food critics. In addition, this project is also open to anyone who is curious or interested in smartdash boards. 
+The potential data that will be collected will come from the [King County](https://data.kingcounty.gov/Health-Wellness/Food-Establishment-Inspection-Data/f29f-zza5/about_data) site as well as restaurant business rankings from [Kaggle](https://www.kaggle.com/datasets/michau96/restaurant-business-rankings-2020). In addition, this pageLinks to an external site. provided by The New York Times, will also prove to be helpful in mapping the different available restaurants. The reasonable functions that can be completed by the end of the quarter should be all of them given that our team works in a timely and efficient manner. The target audience for this visualization will be for potential restaurant customers, or food critics. In addition, this project is also open to anyone who is curious or interested in smartdash boards. 
 
 
 
