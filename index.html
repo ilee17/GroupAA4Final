@@ -5,12 +5,53 @@
     <meta charset="utf-8">
     <title>Restaurant Rating in Seattle</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Oswald" rel="stylesheet">
     <!-- Including the Mapbox GL CSS file -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- Including the Mapbox GL JS file -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
     <script> mapboxgl.accessToken = 'https://api.mapbox.com/styles/v1/ilee17/cltet85kv00sg01oi7iixft3w/wmts?access_token=pk.eyJ1IjoiaWxlZTE3IiwiYSI6ImNsb290d3ZuNTAza3Mya21jOTE1Z2Q4Y2EifQ.psZvBkGOMupJVM6ZjFeSYw'</script>
+<head>
 
-    <style>
+<body>
+        <!-- sidebar -->
+        <div id="info">
+            <div id="title">
+                Restaurant Rating in Seattle
+                <span><a href="https://twitter.com/UW" target="_blank"><i class="bi bi-twitter"></i></a></span>
+                <span><a href="https://github.com/ilee17/GroupAA4Final" target="_blank"><i class="bi bi-github"></i></a></span>
+                <span id="reset"><a href="#">reset</a></span>
+            </div>
+            <div id="count" class="card">
+                <h5 id="desc"> Purpose</h5>
+                <p id="hexbins"></p>
+            </div>
+
+            <div id="footer">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+                dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit
+                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </div>
+        </div>
+        <div id="map"></div>
+        <div id="legend"></div>
+        <script src="js/main.js"></script>
+    </body>
+    
+    </html>
