@@ -1,0 +1,14 @@
+// assign the access token
+mapboxgl.accessToken =
+    'pk.eyJ1IjoiaWxlZTE3IiwiYSI6ImNsb290d3ZuNTAza3Mya21jOTE1Z2Q4Y2EifQ.psZvBkGOMupJVM6ZjFeSYw';
+
+    // declare the map object
+let map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/dark-v10',
+    zoom: 10.70, // starting zoom
+    minZoom: 10.70,
+    center: [-122.331198, 47.613766] // starting center
+});
+
+
