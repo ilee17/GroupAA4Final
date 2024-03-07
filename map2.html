@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Earthquakes in the United States</title>
+    <title>Restaurant ratings in Seattle</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web|Oswald" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet">
@@ -137,27 +137,27 @@
 <body>
     <div id="info">
         <div id="title">
-            Earthquakes in the United States: January 2024
+            Restaurant Ratings in Seattle: 2023
             <span><a href="https://twitter.com/UW" target="_blank"><i class="bi bi-twitter"></i></a></span>
             <span><a href="https://github.com/elilsan" target="_blank"><i class="bi bi-github"></i></a></span>
             <span id="reset"><a href="#">reset</a></span>
         </div>
         <div id="count" class="card">
-            <h5 id="desc"> # Earthquakes in the displaying region</h5>
-            <p id="earthquake-count"></p>
+            <h5 id="desc"> Complaints</h5>
+            <p id="Negative-reviews"></p>
         </div>
-        <div id="earthquake-chart"></div>
+        <div id="reviews"></div>
 
         <div id="footer">
-            The purpose of this smartdashboard is visualize the number of earthquakes 
-            during January 2024. In bar graph that is visualized above, it's purpose 
-            is to illustrate the number of earthquakes in a certain region depending 
-            on where the map is zoomed in and its magnitude level. For example, when 
-            hovering over the state of California, the bar graph will change to show 
-            the total number of earthquakes that have occurred, in addition 
-            to their magnitude levels on the x axis. The y axis lists the number of 
-            earthquakes. In addition, the proportional symbols are click-able, in which 
-            they will list the magnitude of the earthquake that occured in that specific 
+            The purpose of this smartdashboard is visualize the number of earthquakes
+            during January 2024. In bar graph that is visualized above, it's purpose
+            is to illustrate the number of earthquakes in a certain region depending
+            on where the map is zoomed in and its magnitude level. For example, when
+            hovering over the state of California, the bar graph will change to show
+            the total number of earthquakes that have occurred, in addition
+            to their magnitude levels on the x axis. The y axis lists the number of
+            earthquakes. In addition, the proportional symbols are click-able, in which
+            they will list the magnitude of the earthquake that occured in that specific
             area.
         </div>
     </div>
@@ -166,15 +166,15 @@
     <script>
         // assign the access token
         mapboxgl.accessToken =
-            'pk.eyJ1IjoiZWxpbHNhbiIsImEiOiJjbHNheDVoejMwOGI3MmpudHlka2F3b2VsIn0.n64SDOIlbQ9Jx9LiGtVzkg';
-    
+        'pk.eyJ1IjoiaWxlZTE3IiwiYSI6ImNsb290d3ZuNTAza3Mya21jOTE1Z2Q4Y2EifQ.psZvBkGOMupJVM6ZjFeSYw';
+
         // declare the map object
         let map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/dark-v10',
-            zoom: 3.42, // starting zoom
+            zoom: 11, // starting zoom
             minZoom: 2,
-            center: [-113.774899, 39.799714] // starting center
+            center: [-122.4, 47.613766] // starting center
         });
 
         // declare the coordinated chart as well as other variables.
@@ -183,21 +183,21 @@
             numEarthquakes = 0;
 
         // create a few constant variables.
-        const grades = [2, 3, 4],
-            colors = ['rgb(208,209,230)', 'rgb(103,169,207)', 'rgb(1,108,89)'],
-            radii = [5, 15, 20];
+        const grades = [1, 2, 3, 4, 5],
+            colors = ['rgb(249, 46, 2 )', 'rgb( 250, 235, 3)', 'rgb(250, 149, 3 )', 'rgb(3, 250, 227)', 'rbg(14, 250, 3 )'],
+            radii = [5, 10, 15, 20, 25];
 
         // create the legend object and anchor it to the html element with id legend.
         const legend = document.getElementById('legend');
 
         //set up legend grades content and labels
-        let labels = ['<strong>Magnitude</strong>'],
+        let labels = ['<strong>Review Ratings</strong>'],
             vbreak;
 
         //iterate through grades and create a scaled circle and label for each
-        for (var i = 0; i < grades.length; i++) {
-            vbreak = grades[i];
-            // you need to manually adjust the radius of each dot on the legend 
+        for (var i = 0; i < rating.length; i++) {
+            vbreak = rating[i];
+            // you need to manually adjust the radius of each dot on the legend
             // in order to make sure the legend can be properly referred to the dot on the map.
             dot_radii = 2 * radii[i];
             labels.push(
@@ -207,6 +207,7 @@
                 '</span></p>');
 
         }
+        // link group csv file!
         const source =
             '<p style="text-align: right; font-size:10pt">Source: <a href="https://earthquake.usgs.gov/earthquakes/map/?extent=5.09094,-134.82422&extent=56.65623,-61.52344&range=search&timeZone=utc&settings=true&search=%7B%22name%22:%22Search%20Results%22,%22params%22:%7B%22starttime%22:%222024-01-01%2000:00:00%22,%22endtime%22:%222024-01-31%2023:59:59%22,%22maxlatitude%22:50,%22minlatitude%22:24.6,%22maxlongitude%22:-65,%22minlongitude%22:-125,%22minmagnitude%22:2.5,%22orderby%22:%22time%22%7D%7D">USGS</a></p>';
 
@@ -218,7 +219,7 @@
         // define the asynchronous function to load geojson 'geojsonFetch()' data.
         async function geojsonFetch() {
 
-            // Await operator is used to wait for a promise. 
+            // Await operator is used to wait for a promise.
             // An await can cause an async function to pause until a Promise is settled.
             let response;
             response = await fetch('assets/earthquakes.json');
@@ -283,7 +284,7 @@
 
                 // the coordinated chart relevant operations
 
-                // found the the magnitudes of all the earthquakes in the displayed map view.        
+                // found the the magnitudes of all the earthquakes in the displayed map view.
                 magnitudes = calEarthquakes(earthquakes, map.getBounds());
 
                 // enumerate the number of earthquakes.
