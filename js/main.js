@@ -85,7 +85,7 @@
                                 'stops': [
                                     [grades[0], radii[0]],
                                     [grades[1], radii[1]],
-                                    [grades[2], radii[2]], 
+                                    [grades[2], radii[2]],
                                     [grades[3], radii[3]]
                                 ]
                             },
@@ -168,17 +168,21 @@
                     axis: {
                         x: { //magnitude
                             type: 'category',
+                            tick: {
+                                color: 'white'
+                            }
                         },
                         y: { //count
                             tick: {
-                                values: [10, 20, 30, 40]
+                                values: [2, 3, 4, 5],
+                                color: 'white'
                             }
                         }
                     },
                     legend: {
                         show: false
                     },
-                    bindto: "#rating-chart" //bind the chart to the place holder element "earthquake-chart".
+                    bindto: "#reviews-chart" //bind the chart to the place holder element "earthquake-chart".
                 });
 
             });

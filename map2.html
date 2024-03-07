@@ -151,11 +151,11 @@
 
         <div id="footer">
             The purpose of this smart dashboard is to visualize restaurant ratings in Seattle.
-            The bar graph above illustrates the distribution of restaurant ratings in a specific area, 
-            adjusting as the map is zoomed in or out. Ratings are categorized on the x-axis, 
+            The bar graph above illustrates the distribution of restaurant ratings in a specific area,
+            adjusting as the map is zoomed in or out. Ratings are categorized on the x-axis,
             showing the number of restaurants that fall into each rating category. T
-            he y-axis represents the count of restaurants. Additionally, 
-            the proportional symbols on the map are clickable, 
+            he y-axis represents the count of restaurants. Additionally,
+            the proportional symbols on the map are clickable,
             displaying the name and rating of the restaurant in that specific location.
         </div>
     </div>
@@ -332,10 +332,14 @@
                     axis: {
                         x: { //magnitude
                             type: 'category',
+                            tick: {
+                                color: 'white'
+                            }
                         },
                         y: { //count
                             tick: {
-                                values: [2, 3, 4, 5]
+                                values: [2, 3, 4, 5],
+                                color: 'white'
                             }
                         }
                     },
