@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "APIData",
+"name": "reviews",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "name": "Bugis", "rating": 4.3, "comment": "This is my new ABSOLUTE FAVORITE spot in U district!! I can't believe I had this place saved on my list for so long and never was able to give it a try...", "latitude": 47.65957, "longitude": -122.3134505 }, "geometry": { "type": "Point", "coordinates": [ -122.3134505, 47.65957 ] } },
