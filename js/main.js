@@ -174,7 +174,7 @@
                         },
                         y: { //count
                             tick: {
-                                values: [2, 3, 4, 5],
+                                values: [15, 30, 45, 60, 75],
                                 color: 'white'
                             }
                         }
