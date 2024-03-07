@@ -183,7 +183,7 @@
             numreviews = 0;
 
         // create a few constant variables.
-        const grades = [1, 2, 3, 4],
+        const grades = [2, 3, 4, 5],
             colors = ['rgb(249, 46, 2 )', 'rgb(250, 235, 3)', 'rgb(250, 149, 3 )', 'rgb(3, 250, 227)'],
             radii = [5, 10, 15, 20];
 
@@ -195,8 +195,8 @@
             vbreak;
 
         //iterate through grades and create a scaled circle and label for each
-        for (var i = 0; i < Rating.length; i++) {
-            vbreak = Rating[i];
+        for (var i = 0; i < grades.length; i++) {
+            vbreak = grades[i];
             // you need to manually adjust the radius of each dot on the legend
             // in order to make sure the legend can be properly referred to the dot on the map.
             dot_radii = 2 * radii[i];
@@ -262,7 +262,7 @@
                                     [grades[0], colors[0]],
                                     [grades[1], colors[1]],
                                     [grades[2], colors[2]],
-                                    [grades[3], colors[3]],
+                                    [grades[3], colors[3]]
                                 ]
                             },
                             'circle-stroke-color': 'white',
@@ -290,7 +290,7 @@
                 Ratings = calreviews(reviews, map.getBounds());
 
                 // enumerate the number of earthquakes.
-                numreviews = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4];
+                numreviews = Ratings[2] + Ratings[3] + Ratings[4] + Ratings[5];
 
                 // update the content of the element earthquake-count.
                 document.getElementById("reviews-count").innerHTML = numreviews;
@@ -356,7 +356,7 @@
             map.on('idle', () => { //simplifying the function statement: arrow with brackets to define a function
 
                 Ratings = calreviews(reviews, map.getBounds());
-                numreviews = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4];
+                numreviews = Ratings[2] + Ratings[3] + Ratings[4] + Ratings[5];
                 document.getElementById("reviews-count").innerHTML = numreviews;
 
 
@@ -378,10 +378,10 @@
         function calreviews(currentreviews, currentMapBounds) {
 
             let RatingClasses = {
-                1: 0,
                 2: 0,
                 3: 0,
-                4: 0
+                4: 0,
+                5: 0
             };
             currentreviews.features.forEach(function (d) { // d indicate a feature of currentEarthquakes
                 // contains is a spatial operation to determine whether a point within a bbox or not.
