@@ -12,14 +12,14 @@
         });
 
         // declare the coordinated chart as well as other variables.
-        let ratingChart = null,
-            Ratings = {},
-            numAPIData = 0;
+        let reviewsChart = null,
+            Rating = {},
+            numreviews = 0;
 
         // create a few constant variables.
-        const grades = [1, 2, 3, 4, 5],
-            colors = ['rgb(249, 46, 2 )', 'rgb(250, 235, 3)', 'rgb(250, 149, 3 )', 'rgb(3, 250, 227)', 'rbg(14, 250, 3 )'],
-            radii = [5, 10, 15, 20, 25];
+        const grades = [1, 2, 3, 4],
+            colors = ['rgb(249, 46, 2 )', 'rgb(250, 235, 3)', 'rgb(250, 149, 3 )', 'rgb(3, 250, 227)'],
+            radii = [5, 10, 15, 20];
 
         // create the legend object and anchor it to the html element with id legend.
         const legend = document.getElementById('legend');
@@ -29,8 +29,8 @@
             vbreak;
 
         //iterate through grades and create a scaled circle and label for each
-        for (var i = 0; i < Ratings.length; i++) {
-            vbreak = Ratings[i];
+        for (var i = 0; i < Rating.length; i++) {
+            vbreak = Rating[i];
             // you need to manually adjust the radius of each dot on the legend
             // in order to make sure the legend can be properly referred to the dot on the map.
             dot_radii = 2 * radii[i];
@@ -56,8 +56,8 @@
             // Await operator is used to wait for a promise.
             // An await can cause an async function to pause until a Promise is settled.
             let response;
-            response = await fetch('assets/APIData.geojson');
-            APIData = await response.json();
+            response = await fetch('assets/reviews.geojson');
+            reviews = await response.json();
 
 
 
@@ -67,16 +67,16 @@
 
                 // when loading a geojson, there are two steps
                 // add a source of the data and then add the layer out of the source
-                map.addSource('APIData', {
+                map.addSource('reviews', {
                     type: 'geojson',
-                    data: APIData
+                    data: reviews
                 });
 
 
                 map.addLayer({
-                        'id': 'APIData-point',
+                        'id': 'reviews-point',
                         'type': 'circle',
-                        'source': 'APIData',
+                        'source': 'reviews',
                         'minzoom': 2,
                         'paint': {
                             // increase the radii of the circle as mag value increases
@@ -86,8 +86,7 @@
                                     [grades[0], radii[0]],
                                     [grades[1], radii[1]],
                                     [grades[2], radii[2]], 
-                                    [grades[3], radii[3]],
-                                    [grades[4], radii[4]]
+                                    [grades[3], radii[3]]
                                 ]
                             },
                             // change the color of the circle as mag value increases
@@ -98,7 +97,6 @@
                                     [grades[1], colors[1]],
                                     [grades[2], colors[2]],
                                     [grades[3], grades[3]],
-                                    [grades[4], grades[4]]
                                 ]
                             },
                             'circle-stroke-color': 'white',
@@ -111,7 +109,7 @@
 
 
                 // click on each dot to view magnitude in a popup
-                map.on('click', 'APIData-point', (event) => {
+                map.on('click', 'reviews-point', (event) => {
                     new mapboxgl.Popup()
                         .setLngLat(event.features[0].geometry.coordinates)
                         .setHTML(`<strong>Ratings:</strong> ${event.features[0].properties.rating}`)
@@ -123,13 +121,13 @@
                 // the coordinated chart relevant operations
 
                 // found the the magnitudes of all the earthquakes in the displayed map view.
-                Ratings = calAPIData(APIData, map.getBounds());
+                Ratings = calreviews(reviews, map.getBounds());
 
                 // enumerate the number of earthquakes.
-                numAPIData = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4] + Ratings[5];
+                numreviews = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4];
 
                 // update the content of the element earthquake-count.
-                document.getElementById("APIData-count").innerHTML = numAPIData;
+                document.getElementById("reviews-count").innerHTML = numreviews;
 
                 // add "mag" to the beginning of the x variable - the magnitude, and "#" to the beginning of the y variable - the number of earthquake of similar magnitude.
                 x = Object.keys(Ratings);
@@ -139,7 +137,7 @@
 
 
                 // generate the chart
-                ratingChart = c3.generate({
+                reviewsChart = c3.generate({
                     size: {
                         height: 350,
                         width: 460
@@ -160,7 +158,7 @@
                             // combine two filters, the first is ['>=', 'mag', floor], the second is ['<', 'mag', ceiling]
                             // the first indicates all the earthquakes with magnitude greater than floor, the second indicates
                             // all the earthquakes with magnitude smaller than the ceiling.
-                            map.setFilter('APIData-point',
+                            map.setFilter('reviews-point',
                                 ['all',
                                     ['>=', 'rating', floor],
                                     ['<', 'rating', ceiling]
@@ -173,7 +171,7 @@
                         },
                         y: { //count
                             tick: {
-                                values: [10, 20, 30, 40,50]
+                                values: [10, 20, 30, 40]
                             }
                         }
                     },
@@ -191,9 +189,9 @@
             //map.on('load', function loadingData() {
             map.on('idle', () => { //simplifying the function statement: arrow with brackets to define a function
 
-                Ratings = calAPIData(APIData, map.getBounds());
-                numAPIData = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4] + Ratings[5];
-                document.getElementById("APIData-count").innerHTML = numAPIData;
+                Ratings = calreviews(reviews, map.getBounds());
+                numreviews = Ratings[1] + Ratings[2] + Ratings[3] + Ratings[4];
+                document.getElementById("reviews-count").innerHTML = numreviews;
 
 
                 x = Object.keys(Ratings);
@@ -202,7 +200,7 @@
                 y.unshift("#")
 
                 // after finishing each map reaction, the chart will be rendered in case the current bbox changes.
-                ratingChart.load({
+                reviewsChart.load({
                     columns: [x, y]
                 });
             });
@@ -211,16 +209,15 @@
         // call the geojson loading function
         geojsonFetch();
 
-        function calAPIData(currentAPIData, currentMapBounds) {
+        function calreviews(currentreviews, currentMapBounds) {
 
             let RatingClasses = {
                 1: 0,
                 2: 0,
                 3: 0,
-                4: 0,
-                5: 0
+                4: 0
             };
-            currentAPIData.features.forEach(function (d) { // d indicate a feature of currentEarthquakes
+            currentreviews.features.forEach(function (d) { // d indicate a feature of currentEarthquakes
                 // contains is a spatial operation to determine whether a point within a bbox or not.
                 if (currentMapBounds.contains(d.geometry.coordinates)) {
                     // if within, the # of the earthquake in the same magnitude increase by 1.
@@ -241,7 +238,7 @@
                 center: [-122.4, 47.613766]
             });
             // also remove all the applied filters
-            map.setFilter('APIData-point', null)
+            map.setFilter('reviews-point', null)
 
 
         });
