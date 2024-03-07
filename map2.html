@@ -275,7 +275,7 @@
                 map.on('click', 'reviews-point', (event) => {
                     new mapboxgl.Popup()
                         .setLngLat(event.features[0].geometry.coordinates)
-                        .setHTML(`<strong>Ratings:</strong> ${event.features[0].properties.rating}`)
+                        .setHTML(`<strong>Ratings:</strong> ${event.features[0].properties.rating}` +  `<strong>Customer comment:</strong> ${event.features[0].properties.comment}`)
                         .addTo(map);
                 });
 
