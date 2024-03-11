@@ -1,7 +1,7 @@
 # About
 
 ## Project Summary
-This project was intended to display the ratings of different restaurants in the University District of Seattle, with the help of a Smart dashboard. To achieve this, the data from yelp was used in order to categorize the restaurants into their respective ratings, as well as displaying one customer comment. This project is intended for those who are curious about the ratings of the restaurants in the U District as of the year 2024. This includes tourists, students, or any visitor who needs some guidence in choosing the right restaurant. These ratings do not reflect the opinions of our group but rather we seek to visualize the results that were yielded from yelp. 
+This project was intended to display the ratings of different restaurants in the University District of Seattle, with the help of a Smart dashboard. To achieve this, the data from [yelp](https://www.yelp.com/) was used in order to categorize the restaurants into their respective ratings, as well as displaying one customer comment. This project is intended for those who are curious about the ratings of the restaurants in the U District as of the year 2024. This includes tourists, students, or any visitor who needs some guidence in choosing the right restaurant. These ratings do not reflect the opinions of our group but rather we seek to visualize the results that were yielded from yelp. 
 
 ## Our Team 
 * Bella Lee 
