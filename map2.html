@@ -277,6 +277,7 @@
                     new mapboxgl.Popup()
                         .setLngLat(event.features[0].geometry.coordinates)
                         .setHTML(`<strong>Ratings:</strong> ${event.features[0].properties.rating}<br>
+                        <strong>Restaurant:</strong> ${event.features[0].properties.name}<br>
                         <strong>Customer comment:</strong> ${event.features[0].properties.comment}`)
                         .addTo(map);
                 });
